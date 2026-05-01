@@ -1,0 +1,6 @@
+defaults:
+  - calibrate_sft
+  - _self_
+
+num_decimals: 5
+max_bins: 4096

@@ -1,0 +1,93 @@
+{
+  "tiny_gsm8k": {
+    "dataset_args": [
+      "tinyBenchmarks/tinyGSM8k",
+      "main"
+    ],
+    "dataset_kwargs": {
+      "split": "test"
+    },
+    "keys": [
+      "answer",
+      "input_formatted",
+      "question"
+    ]
+  },
+  "tiny_hellaswag": {
+    "dataset_args": [
+      "tinyBenchmarks/tinyHellaswag"
+    ],
+    "dataset_kwargs": {
+      "split": "validation"
+    },
+    "keys": [
+      "activity_label",
+      "ctx",
+      "ctx_a",
+      "ctx_b",
+      "endings",
+      "ind",
+      "input_formatted",
+      "label",
+      "source_id",
+      "split",
+      "split_type"
+    ]
+  },
+  "tiny_mmlu": {
+    "dataset_args": [
+      "tinyBenchmarks/tinyMMLU"
+    ],
+    "dataset_kwargs": {
+      "split": "test"
+    },
+    "keys": [
+      "answer",
+      "choices",
+      "input_formatted",
+      "question",
+      "subject"
+    ]
+  },
+  "tiny_truthfulqa": {
+    "dataset_args": [
+      "tinyBenchmarks/tinyTruthfulQA",
+      "multiple_choice"
+    ],
+    "dataset_kwargs": {
+      "split": "validation"
+    },
+    "keys": [
+      "input_formatted",
+      "mc1_targets",
+      "mc2_targets",
+      "question"
+    ],
+    "nested_keys": {
+      "mc1_targets": [
+        "choices",
+        "labels"
+      ],
+      "mc2_targets": [
+        "choices",
+        "labels"
+      ]
+    }
+  },
+  "tiny_winogrande": {
+    "dataset_args": [
+      "tinyBenchmarks/tinyWinogrande",
+      "winogrande_xl"
+    ],
+    "dataset_kwargs": {
+      "split": "validation"
+    },
+    "keys": [
+      "answer",
+      "input_formatted",
+      "option1",
+      "option2",
+      "sentence"
+    ]
+  }
+}

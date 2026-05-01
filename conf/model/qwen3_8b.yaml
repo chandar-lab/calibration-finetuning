@@ -1,0 +1,10 @@
+name: qwen3_8b
+checkpoint: Qwen/Qwen3-8B
+device: cuda
+dtype: bfloat16
+trust_remote_code: true
+enable_thinking: false
+max_new_tokens: 32
+do_sample: true
+temperature: 1.0
+top_p: 1.0

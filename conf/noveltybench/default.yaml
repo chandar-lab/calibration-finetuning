@@ -1,0 +1,30 @@
+assets_root: benchmarks/noveltybench
+enabled_splits:
+  - curated
+  - wildchat
+max_prompts_per_split: null
+resume: true
+output_root: outputs/runs
+generation:
+  num_generations: 10
+  batch_size: 16
+  max_new_tokens: 512
+  temperature: 1.0
+  top_p: 1.0
+  do_sample: true
+classifier:
+  tokenizer_checkpoint: microsoft/deberta-v3-large
+  checkpoint: yimingzhang/deberta-v3-large-generation-similarity
+  threshold: 0.102
+  max_length: 128
+  batch_size: 16
+  device: cuda
+  local_files_only: false
+reward_model:
+  checkpoint: Skywork/Skywork-Reward-Gemma-2-27B-v0.2
+  batch_size: 4
+  dtype: bfloat16
+  device_map: auto
+  attn_implementation: eager
+  local_files_only: false
+patience: 0.8

@@ -1,0 +1,16 @@
+dataset_root: datasets/paloma
+slices:
+  - wikitext_103
+  - c4_en
+  - dolma-v1_5
+  - mc4
+  - ptb
+  - redpajama
+  - falcon-refinedweb
+split: test
+max_documents: null
+max_tokens: null
+context_length: 2048
+stride: 1024
+batch_size: 1
+text_field: text

@@ -1,0 +1,107 @@
+# Operating system clutter
+.DS_Store
+Thumbs.db
+Desktop.ini
+._*
+
+# Editor and IDE settings
+.idea/
+.vscode/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.python-version
+
+# Virtual environments and local Python installs
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Packaging and build artifacts
+build/
+dist/
+site/
+.eggs/
+*.egg
+*.egg-info/
+pip-wheel-metadata/
+
+# Test, lint, and type-checker caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs and local runtime state
+*.log
+*.tmp
+logs/
+log/
+*.pid
+*.seed
+*.stackdump
+slurm-*.out
+slurm-*.err
+
+# Secrets and local environment overrides
+.env
+.env.*
+*.env
+*.local
+!.env.example
+
+# Project-specific experiment outputs
+/outputs/
+/wandb/
+/.hydra/
+
+# Local datasets and generated corpora
+/data/
+/datasets/
+
+# Model checkpoints and heavyweight artifacts
+/checkpoints/
+/artifacts/
+/cache/
+/tmp/
+/temp/
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.h5
+*.npz
+*.npy
+
+# Documentation build outputs
+docs/_build/
+
+# Optional dependency / package manager locks for local envs
+poetry.lock
+Pipfile.lock
+
+# Local git and patch leftovers
+*.orig
+*.rej

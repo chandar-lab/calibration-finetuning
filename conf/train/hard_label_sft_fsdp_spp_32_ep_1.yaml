@@ -1,0 +1,6 @@
+defaults:
+  - hard_label_sft_fsdp
+  - _self_
+
+epochs: 1
+samples_per_prompt_per_epoch: 32

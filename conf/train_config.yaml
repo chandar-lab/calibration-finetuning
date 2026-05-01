@@ -1,0 +1,18 @@
+defaults:
+  - model: qwen3_1p7b
+  - data: calibrate_sft
+  - train: calibrate_sft
+  - experiment: calibrate_sft
+  - distributed: disabled
+  - _self_
+
+seed: 11
+output_root: outputs/train
+dataset_root: outputs/datasets/calibrate_sft
+eval_output_root: outputs/runs
+
+hydra:
+  run:
+    dir: ${output_root}/${now:%Y%m%d_%H%M%S}_${experiment.name}
+  job:
+    chdir: false

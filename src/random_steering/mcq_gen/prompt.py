@@ -1,0 +1,28 @@
+from __future__ import annotations
+
+
+MEDICAL_MCQ_PROMPT = """You are a medical education expert who creates high-quality multiple-choice questions for medical students and professionals.
+
+Please generate a medical multiple-choice question (single answer, 4 options). The question should cover medical knowledge and be of moderate difficulty.
+
+Please strictly follow this format:
+Question: [Question content]
+A. [Option A content]
+B. [Option B content]
+C. [Option C content]
+D. [Option D content]
+Correct Answer: [A/B/C/D]
+Explanation: [Brief explanation]
+
+Requirements:
+(1) The question should have practical medical value.
+(2) All four options should be plausible with reasonable distractors.
+(3) Only one correct answer.
+(4) Output directly without any additional content.
+(5) Cover different medical knowledge areas (e.g., internal medicine, surgery, pharmacology, pathology, diagnostics).
+(6) The correct answer should be evenly distributed among A, B, C, D options to avoid bias toward any particular option.
+"""
+
+
+def get_medical_mcq_prompt() -> str:
+    return MEDICAL_MCQ_PROMPT

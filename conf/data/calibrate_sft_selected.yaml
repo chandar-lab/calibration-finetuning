@@ -1,0 +1,5 @@
+defaults:
+  - calibrate_sft
+  - _self_
+
+eval_prompt_selection: paper_selected

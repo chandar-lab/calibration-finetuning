@@ -1,0 +1,18 @@
+enabled_tasks:
+  - tiny_mmlu
+  - tiny_hellaswag
+  - tiny_truthfulqa
+  - tiny_winogrande
+  - tiny_gsm8k_strict
+  - tiny_gsm8k_flexible
+batch_size: 4
+max_examples_per_task: null
+use_chat_template: true
+output_dir_root: outputs/retention
+generation:
+  max_new_tokens: 256
+  temperature: 0.0
+  top_p: 1.0
+gsm8k:
+  strict_enabled: true
+  flexible_enabled: true

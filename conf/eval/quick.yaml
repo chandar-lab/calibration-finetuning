@@ -1,0 +1,9 @@
+name: quick
+num_samples: 200
+distributions:
+  - uniform_0_1
+  - gaussian_0_1
+  - bernoulli_0_7
+seeds:
+  - 11
+  - 29

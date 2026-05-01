@@ -1,0 +1,15 @@
+defaults:
+  - model: qwen3_1p7b
+  - perplexity: standard_lm
+  - eval_target: calibrate_sft_qwen3_1p7b_baseline_paper
+  - inference: hf
+  - _self_
+
+seed: 11
+output_root: outputs/perplexity
+
+hydra:
+  run:
+    dir: ${output_root}/${now:%Y%m%d_%H%M%S}_${eval_target.name}
+  job:
+    chdir: false

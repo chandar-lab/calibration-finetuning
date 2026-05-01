@@ -1,0 +1,7 @@
+name: full
+num_samples: 1000
+distributions: all
+seeds:
+  - 11
+  - 29
+  - 47

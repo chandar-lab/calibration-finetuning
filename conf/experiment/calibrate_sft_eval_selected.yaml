@@ -1,0 +1,18 @@
+defaults:
+  - calibrate_sft
+  - _self_
+
+name: calibrate_sft_eval_selected
+sample_eval:
+  enabled: true
+  protocol: independent
+  num_samples: 1000
+  batch_size: 16
+  seeds:
+    - 11
+  max_prompts_per_split: null
+logit_eval:
+  enabled: true
+  num_mc_samples: 4
+  batch_size: 16
+  max_prompts_per_split: null

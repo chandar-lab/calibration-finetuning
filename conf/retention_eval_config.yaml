@@ -1,0 +1,15 @@
+defaults:
+  - model: qwen3_1p7b
+  - retention: tinybenchmarks
+  - eval_target: tinybenchmarks_baseline
+  - inference: hf
+  - _self_
+
+seed: 11
+output_root: outputs/retention
+
+hydra:
+  run:
+    dir: ${output_root}/${now:%Y%m%d_%H%M%S}_${eval_target.name}
+  job:
+    chdir: false

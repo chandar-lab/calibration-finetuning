@@ -1,0 +1,12 @@
+name: gpt_oss_20b
+checkpoint: openai/gpt-oss-20b
+device: cuda
+dtype: bfloat16
+trust_remote_code: true
+enable_thinking: false
+reasoning_effort: low
+generation_prefix: "<|channel|>final<|message|>"
+max_new_tokens: 32
+do_sample: true
+temperature: 1.0
+top_p: 1.0

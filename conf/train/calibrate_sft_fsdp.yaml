@@ -1,0 +1,31 @@
+name: calibrate_sft_fsdp
+optimizer: adamw
+learning_rate: 2.0e-4
+weight_decay: 0.01
+scheduler: cosine
+warmup_ratio: 0.03
+tau: 1.0
+epsilon_smoothing: 1.0e-8
+per_device_batch_size: 8
+gradient_accumulation_steps: 1
+epochs: 3
+max_seq_length: 256
+log_interval_steps: 10
+lora:
+  enabled: true
+  rank: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+wandb:
+  enabled: false
+  project: calibration-finetuning
+  entity: null
+  name: ${experiment.name}
+  tags:
+    - soft_target
+  mode: disabled

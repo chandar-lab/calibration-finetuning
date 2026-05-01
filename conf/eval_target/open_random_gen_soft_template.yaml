@@ -1,0 +1,5 @@
+name: open_random_gen_soft_template
+base_checkpoint: Qwen/Qwen3-1.7B
+adapter_checkpoint: outputs/train/<soft-target-run>/checkpoint
+tokenizer_checkpoint: outputs/train/<soft-target-run>/checkpoint
+local_files_only: true

@@ -1,0 +1,10 @@
+name: llama_3_2_1b_it
+checkpoint: meta-llama/Llama-3.2-1B-Instruct
+device: cuda
+dtype: bfloat16
+trust_remote_code: true
+enable_thinking: null
+max_new_tokens: 32
+do_sample: true
+temperature: 1.0
+top_p: 1.0

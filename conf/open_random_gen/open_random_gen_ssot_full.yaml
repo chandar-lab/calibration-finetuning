@@ -1,0 +1,13 @@
+prompts_path: benchmarks/open_random_gen/prompts.json
+compute_support_metrics: false
+compute_sampling_metrics: true
+top_p_threshold: 0.9
+top_p_thresholds: []
+num_samples_per_prompt: 100
+batch_size: 16
+generation:
+  max_new_tokens: 4096
+  temperature: 1.0
+  top_p: 1.0
+  do_sample: true
+output_root: outputs/runs

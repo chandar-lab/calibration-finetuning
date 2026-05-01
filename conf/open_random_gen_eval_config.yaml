@@ -1,0 +1,16 @@
+defaults:
+  - model: qwen3_1p7b
+  - open_random_gen: open_random_gen
+  - eval_target: open_random_gen_baseline
+  - inference: hf
+  - inference_method: none
+  - _self_
+
+seed: 11
+output_root: ${open_random_gen.output_root}
+
+hydra:
+  run:
+    dir: ${output_root}/${now:%Y%m%d_%H%M%S}_${eval_target.name}_open_random_gen
+  job:
+    chdir: false

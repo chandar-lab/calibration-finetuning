@@ -1,0 +1,10 @@
+enabled: false
+strategy: none
+backend: nccl
+mixed_precision: bfloat16
+sharding_strategy: full_shard
+use_orig_params: true
+activation_checkpointing: false
+cpu_offload: false
+sync_module_states: false
+limit_all_gathers: true

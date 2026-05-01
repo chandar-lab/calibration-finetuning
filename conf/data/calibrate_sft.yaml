@@ -1,0 +1,669 @@
+dataset_name: calibrate_sft
+protocol: independent
+quantile_low: 0.001
+quantile_high: 0.999
+num_decimals: 2
+max_bins: 1001
+tail_policy: clip_to_edge_bin
+linspace_points_1d: 11
+linspace_points_2d_per_axis: 11
+train_max_specs_per_family: 121
+test_unseen_max_specs_per_family: 36
+ood_max_specs_per_family: 36
+eval_prompt_selection: full_grid
+train_families:
+  - uniform
+  - gaussian
+  - beta
+  - binomial
+  - exponential
+  - geometric
+  - negative_binomial
+  - lognormal
+  - triangular
+  - rayleigh
+  - cauchy
+  - student_t
+  - chi_square
+  - f_distribution
+  - gamma
+  - laplace
+  - logistic
+  - pareto
+  - hypergeometric
+  - gumbel
+  - skellam
+  - beta_binomial
+  - lomax
+  - inverse_gaussian
+heldout_families:
+  - bernoulli
+  - poisson
+  - weibull
+  - maxwell
+  - chi
+  - truncnorm
+families:
+  uniform:
+    train:
+      max_specs: 121
+      a:
+        min: -5.0
+        max: 2.0
+        num_points: 11
+      width:
+        min: 1.0
+        max: 5.0
+        num_points: 11
+    test_unseen:
+      max_specs: 36
+      a:
+        min: 2.5
+        max: 4.5
+        num_points: 6
+      width:
+        min: 5.5
+        max: 8.0
+        num_points: 6
+    test_selected:
+      - a: 3.5
+        width: 7.0
+  gaussian:
+    train:
+      max_specs: 121
+      mu:
+        min: -2.0
+        max: 2.0
+        num_points: 11
+      sigma:
+        min: 0.5
+        max: 2.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      mu:
+        min: 2.5
+        max: 4.0
+        num_points: 6
+      sigma:
+        min: 2.25
+        max: 3.5
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - mu: 3.5
+        sigma: 3.0
+  beta:
+    train:
+      max_specs: 121
+      alpha:
+        min: 0.5
+        max: 5.0
+        num_points: 11
+        spacing: logspace
+      beta:
+        min: 0.5
+        max: 5.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      alpha:
+        min: 5.5
+        max: 8.0
+        num_points: 6
+        spacing: logspace
+      beta:
+        min: 5.5
+        max: 8.0
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - alpha: 7.0
+        beta: 7.0
+  bernoulli:
+    ood:
+      max_specs: 5
+      p:
+        values: [0.1, 0.3, 0.5, 0.7, 0.9]
+    ood_selected:
+      - p: 0.1
+      - p: 0.5
+      - p: 0.9
+  binomial:
+    train:
+      max_specs: 44
+      n:
+        values: [5, 10, 15, 20]
+      p:
+        values: [0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8]
+    test_unseen:
+      max_specs: 10
+      n:
+        values: [25, 30]
+      p:
+        values: [0.25, 0.4, 0.5, 0.6, 0.75]
+    test_selected:
+      - n: 25
+        p: 0.5
+  poisson:
+    ood:
+      max_specs: 17
+      lambda:
+        min: 1.0
+        max: 12.0
+        num_points: 17
+        spacing: logspace
+    ood_selected:
+      - lambda: 1.0
+      - lambda: 4.0
+      - lambda: 12.0
+  exponential:
+    train:
+      max_specs: 25
+      lambda:
+        min: 0.5
+        max: 5.0
+        num_points: 25
+        spacing: logspace
+    test_unseen:
+      max_specs: 12
+      lambda:
+        min: 5.5
+        max: 8.0
+        num_points: 12
+        spacing: logspace
+    test_selected:
+      - lambda: 7.0
+  geometric:
+    train:
+      max_specs: 13
+      p:
+        values: [0.2, 0.225, 0.25, 0.3, 0.35, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.775, 0.8]
+    test_unseen:
+      max_specs: 10
+      p:
+        values: [0.05, 0.075, 0.1, 0.125, 0.15, 0.85, 0.875, 0.9, 0.925, 0.95]
+    test_selected:
+      - p: 0.125
+  negative_binomial:
+    train:
+      max_specs: 44
+      r:
+        values: [3, 5, 8, 12]
+      p:
+        values: [0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8]
+    test_unseen:
+      max_specs: 12
+      r:
+        values: [15, 20]
+      p:
+        values: [0.1, 0.15, 0.2, 0.8, 0.85, 0.9]
+    test_selected:
+      - r: 15
+        p: 0.15
+  lognormal:
+    train:
+      max_specs: 121
+      mu:
+        min: -1.0
+        max: 1.5
+        num_points: 11
+      sigma:
+        min: 0.25
+        max: 1.25
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      mu:
+        min: 1.75
+        max: 3.0
+        num_points: 6
+      sigma:
+        min: 1.5
+        max: 2.25
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - mu: 2.5
+        sigma: 2.0
+  triangular:
+    train:
+      max_specs: 125
+      a:
+        min: -3.0
+        max: 1.0
+        num_points: 5
+      width:
+        min: 1.0
+        max: 5.0
+        num_points: 5
+      mode_fraction:
+        values: [0.1, 0.3, 0.5, 0.7, 0.9]
+    test_unseen:
+      max_specs: 27
+      a:
+        min: 1.5
+        max: 3.5
+        num_points: 3
+      width:
+        min: 5.5
+        max: 8.0
+        num_points: 3
+      mode_fraction:
+        values: [0.1, 0.5, 0.9]
+    test_selected:
+      - a: 2.5
+        width: 7.0
+        mode_fraction: 0.5
+  rayleigh:
+    train:
+      max_specs: 25
+      sigma:
+        min: 0.5
+        max: 2.0
+        num_points: 25
+        spacing: logspace
+    test_unseen:
+      max_specs: 12
+      sigma:
+        min: 2.25
+        max: 3.5
+        num_points: 12
+        spacing: logspace
+    test_selected:
+      - sigma: 3.0
+  cauchy:
+    train:
+      max_specs: 121
+      x0:
+        min: -2.0
+        max: 2.0
+        num_points: 11
+      gamma:
+        min: 0.5
+        max: 2.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      x0:
+        min: 2.5
+        max: 4.0
+        num_points: 6
+      gamma:
+        min: 2.25
+        max: 3.5
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - x0: 3.5
+        gamma: 3.0
+  student_t:
+    train:
+      max_specs: 12
+      nu:
+        values: [2.5, 2.75, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+    test_unseen:
+      max_specs: 6
+      nu:
+        values: [10.5, 12.0, 14.0, 16.0, 18.0, 20.0]
+    test_selected:
+      - nu: 16.0
+  chi_square:
+    train:
+      max_specs: 13
+      nu:
+        values: [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 10.0, 12.0, 14.0, 16.0, 18.0, 20.0]
+    test_unseen:
+      max_specs: 6
+      nu:
+        values: [21.0, 24.0, 28.0, 32.0, 36.0, 40.0]
+    test_selected:
+      - nu: 32.0
+  f_distribution:
+    train:
+      max_specs: 16
+      d1:
+        values: [3, 5, 7, 10]
+      d2:
+        values: [5, 10, 15, 20]
+    test_unseen:
+      max_specs: 4
+      d1:
+        values: [12, 15]
+      d2:
+        values: [24, 30]
+    test_selected:
+      - d1: 12
+        d2: 24
+  gamma:
+    train:
+      max_specs: 121
+      alpha:
+        min: 1.0
+        max: 5.0
+        num_points: 11
+        spacing: logspace
+      beta:
+        min: 1.0
+        max: 5.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      alpha:
+        min: 5.5
+        max: 8.0
+        num_points: 6
+        spacing: logspace
+      beta:
+        min: 5.5
+        max: 8.0
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - alpha: 7.0
+        beta: 7.0
+  weibull:
+    ood:
+      max_specs: 36
+      k:
+        min: 0.5
+        max: 3.0
+        num_points: 6
+        spacing: logspace
+      lambda:
+        min: 0.5
+        max: 3.0
+        num_points: 6
+        spacing: logspace
+    ood_selected:
+      - k: 0.5
+        lambda: 0.5
+      - k: 1.5
+        lambda: 1.5
+      - k: 3.0
+        lambda: 3.0
+  laplace:
+    train:
+      max_specs: 121
+      mu:
+        min: -2.0
+        max: 2.0
+        num_points: 11
+      b:
+        min: 0.5
+        max: 2.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      mu:
+        min: 2.5
+        max: 4.0
+        num_points: 6
+      b:
+        min: 2.25
+        max: 3.5
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - mu: 3.5
+        b: 3.0
+  logistic:
+    train:
+      max_specs: 121
+      mu:
+        min: -2.0
+        max: 2.0
+        num_points: 11
+      s:
+        min: 0.5
+        max: 2.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      mu:
+        min: 2.5
+        max: 4.0
+        num_points: 6
+      s:
+        min: 2.25
+        max: 3.5
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - mu: 3.5
+        s: 3.0
+  pareto:
+    train:
+      max_specs: 99
+      alpha:
+        values: [2.0, 2.25, 2.5, 2.75, 3.0, 3.5, 4.0, 4.5, 5.0]
+      xm:
+        min: 0.5
+        max: 2.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 30
+      alpha:
+        values: [5.5, 6.0, 6.5, 7.0, 8.0]
+      xm:
+        min: 2.5
+        max: 4.0
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - alpha: 6.5
+        xm: 3.5
+  hypergeometric:
+    train:
+      max_specs: 45
+      M:
+        values: [30, 50, 80]
+      N:
+        values: [5, 10, 15]
+      success_fraction:
+        values: [0.2, 0.35, 0.5, 0.65, 0.8]
+    test_unseen:
+      max_specs: 12
+      M:
+        values: [100, 120]
+      N:
+        values: [20, 25]
+      success_fraction:
+        values: [0.2, 0.5, 0.8]
+    test_selected:
+      - M: 100
+        N: 20
+        success_fraction: 0.5
+  gumbel:
+    train:
+      max_specs: 121
+      mu:
+        min: -2.0
+        max: 2.0
+        num_points: 11
+      beta:
+        min: 0.5
+        max: 2.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      mu:
+        min: 2.5
+        max: 4.0
+        num_points: 6
+      beta:
+        min: 2.25
+        max: 3.5
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - mu: 3.5
+        beta: 3.0
+  skellam:
+    train:
+      max_specs: 121
+      mu1:
+        min: 1.0
+        max: 8.0
+        num_points: 11
+        spacing: logspace
+      mu2:
+        min: 1.0
+        max: 8.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      mu1:
+        min: 8.5
+        max: 12.0
+        num_points: 6
+        spacing: logspace
+      mu2:
+        min: 8.5
+        max: 12.0
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - mu1: 10.5
+        mu2: 10.5
+  beta_binomial:
+    train:
+      max_specs: 75
+      n:
+        values: [10, 20, 30]
+      alpha:
+        min: 0.5
+        max: 5.0
+        num_points: 5
+        spacing: logspace
+      beta:
+        min: 0.5
+        max: 5.0
+        num_points: 5
+        spacing: logspace
+    test_unseen:
+      max_specs: 18
+      n:
+        values: [40, 50]
+      alpha:
+        min: 5.5
+        max: 8.0
+        num_points: 3
+        spacing: logspace
+      beta:
+        min: 5.5
+        max: 8.0
+        num_points: 3
+        spacing: logspace
+    test_selected:
+      - n: 40
+        alpha: 6.5
+        beta: 6.5
+  lomax:
+    train:
+      max_specs: 121
+      alpha:
+        min: 1.5
+        max: 4.0
+        num_points: 11
+        spacing: logspace
+      lambda:
+        min: 0.5
+        max: 3.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      alpha:
+        min: 4.5
+        max: 7.0
+        num_points: 6
+        spacing: logspace
+      lambda:
+        min: 3.5
+        max: 5.0
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - alpha: 6.0
+        lambda: 4.5
+  inverse_gaussian:
+    train:
+      max_specs: 121
+      mu:
+        min: 0.5
+        max: 3.0
+        num_points: 11
+        spacing: logspace
+      lambda:
+        min: 0.5
+        max: 5.0
+        num_points: 11
+        spacing: logspace
+    test_unseen:
+      max_specs: 36
+      mu:
+        min: 3.5
+        max: 6.0
+        num_points: 6
+        spacing: logspace
+      lambda:
+        min: 5.5
+        max: 8.0
+        num_points: 6
+        spacing: logspace
+    test_selected:
+      - mu: 5.0
+        lambda: 7.0
+  maxwell:
+    ood:
+      max_specs: 9
+      scale:
+        values: [0.75, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0]
+    ood_selected:
+      - scale: 0.75
+      - scale: 1.5
+      - scale: 2.5
+  chi:
+    ood:
+      max_specs: 9
+      df:
+        values: [1.5, 2.0, 3.0, 4.0, 5.0, 7.0, 10.0, 14.0, 20.0]
+    ood_selected:
+      - df: 2.0
+      - df: 5.0
+      - df: 10.0
+  truncnorm:
+    ood:
+      max_specs: 16
+      mu:
+        values: [0.0, 1.0]
+      sigma:
+        values: [1.0, 1.5]
+      lower:
+        values: [-2.0, -1.0]
+      upper:
+        values: [1.0, 2.0]
+    ood_selected:
+      - mu: 0.0
+        sigma: 1.0
+        lower: -1.0
+        upper: 1.0
+      - mu: 0.0
+        sigma: 1.0
+        lower: -2.0
+        upper: 2.0
+      - mu: 1.0
+        sigma: 1.5
+        lower: -1.0
+        upper: 2.0

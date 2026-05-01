@@ -1,0 +1,10 @@
+dataset_root: datasets/paloma
+slices:
+  - wikitext_103
+split: test
+max_documents: null
+max_tokens: null
+context_length: 2048
+stride: 2048
+batch_size: 1
+text_field: text

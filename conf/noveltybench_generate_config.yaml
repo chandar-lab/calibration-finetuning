@@ -1,0 +1,16 @@
+defaults:
+  - model: qwen3_1p7b
+  - noveltybench: default
+  - eval_target: noveltybench_baseline
+  - inference: vllm
+  - _self_
+
+seed: 11
+run_dir: null
+output_root: ${noveltybench.output_root}
+
+hydra:
+  run:
+    dir: ${output_root}/${now:%Y%m%d_%H%M%S}_${eval_target.name}_noveltybench_generate
+  job:
+    chdir: false

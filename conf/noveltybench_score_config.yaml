@@ -1,0 +1,12 @@
+defaults:
+  - noveltybench: default
+  - _self_
+
+run_dir: null
+output_root: ${noveltybench.output_root}
+
+hydra:
+  run:
+    dir: ${output_root}/${now:%Y%m%d_%H%M%S}_noveltybench_score
+  job:
+    chdir: false

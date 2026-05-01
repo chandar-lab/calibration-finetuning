@@ -1,0 +1,7 @@
+name: ssot
+enabled: true
+mode: auto
+strict_answer_extraction: true
+debug_log_examples: 3
+force_enable_thinking: auto
+prompt_variant: faithful_v1
